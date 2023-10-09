@@ -16,6 +16,10 @@ species
 # plot
 plot(species)
 
+# when this appears: Error in plot.new() : figure margins too large
+# use this function: to adjust plot margins
+par(mar = c(1, 1, 1, 1))
+
 # looking at the occurrences
 species$Occurrence
 
