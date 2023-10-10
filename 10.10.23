@@ -1,0 +1,64 @@
+# A package is needed for point pattern analysis
+
+install.packages("spatstat")
+library(spatstat)
+
+# let's use the bei data:
+# data description:
+# https://CRAN.R-project.org/package=spatstat
+
+bei
+# plotting the data
+plot(bei)
+
+# changing dimension - cex
+plot(bei, cex=.2)
+
+# density map, passing from points to continuous surface
+densitymap <- density(bei)
+real-valued pixel image
+128 x 128 pixel array (ny, nx)
+enclosing rectangle: [0, 1000] x [0, 500] metres
+plot(densitymap) # image representing the density of the trees in your area
+
+# we want to add the points of bei on top of the density map
+points(bei, cex = .2)
+
+# we want to change the colours, because not all people are able to see the rainbow colour palette
+cl <- colorRampPalette(c("black", "red", "orange", "yellow"))(100) # how many colors we want to see passing through the ones listed
+plot(densitymap, col=cl)
+# why yellow color as maximum? Because is the first one recognized by the eye
+
+#let's try a lower number
+cl <- colorRampPalette(c("black", "red", "orange", "yellow"))(4) 
+plot(densitymap, col=cl) # there is no continuity
+
+# how to know the names of colors in R: look up online
+# no green and red or blue and red together
+
+cl2 <- colorRampPalette(c("chartreuse3", "darkorchid3", "darkorange1", "black"))(100)
+plot(densitymap, col=cl2)
+plot(bei.extra) # with 2 variables
+# we want to select only one of the variables
+elev <- bei.extra[[1]] # [[]] bevause we are in 2 dimensions (image)
+plot(elev)
+
+# another way is using the name
+bei.extra
+bei.extra$elev
+
+# multiframe: create plot with multiple variables, big frame with plots inside
+par(mfrow = c (1,2)) # 1 row and 2 columns
+plot(densitymap)
+plot(elev)
+
+# we can change position of the plots
+par(mfrow = c (2,1)) # 2 rows and 1 column
+plot(densitymap)
+plot(elev)
+par(mfrow = c (1,3))
+plot(bei, cex = .2)
+plot(densitymap, col = cl2)
+plot(elev)
+
+# usefule to compare data and find out why
