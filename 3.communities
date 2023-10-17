@@ -1,0 +1,52 @@
+# communities.multivariate
+library(vegan)
+
+data(dune)
+ord <- decorana(dune)
+ord
+
+# Call:
+# decorana(veg = dune) 
+
+# Detrended correspondence analysis with 26 segments.
+# Rescaling of axes with 4 iterations.
+
+#                   DCA1   DCA2
+# Eigenvalues     0.5117 0.3036
+# Decorana values 0.5360 0.2869
+# Axis lengths    3.7004 3.1166
+#                    DCA3    DCA4
+# Eigenvalues     0.12125 0.14267
+# Decorana values 0.08136 0.04814
+# Axis lengths    1.30055 1.47888
+
+plot(ord)
+
+#communities.overlap
+install.packages("overlap")
+library(overlap)
+# https://cran.r-project.org/web/packages/overlap/vignettes/overlap.pdf
+
+# data
+data(kerinci)
+head(kerinci)
+
+# tiger
+timeRad <- kerinci$Time * 2 * pi
+timeRad
+tig <- timeRad[kerinci$Sps == 'tiger']
+densityPlot(tig, rug=TRUE)
+
+# overlap
+mac <- timeRad[kerinci$Sps == 'macaque']
+overlapPlot(tig, mac)
+legend('topright', c("Tigers", "Macaques"), lty=c(1,2), col=c("black","blue"), bty='n')       
+
+# species
+kerinci$Sps
+summary(kerinci$Sps)
+
+# tapir
+tap <- timeRad[kerinci$Sps == 'tapir']
+overlapPlot(mac, tap)
+legend('topright', c("Macaques", "Tapirs"), lty=c(1,2), col=c("black","blue"), bty='n')       
