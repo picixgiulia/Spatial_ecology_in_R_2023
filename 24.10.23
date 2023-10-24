@@ -1,0 +1,20 @@
+# Ecosystems and remote sensing
+Ecosystems are very big, hard to collect enough data:
+- Establish plots of the same dimensions and take samples
+- Use remote sensing -> satelite images
+The european state agency (Europe) and Nasa (US) own the satelites around the globe.
+Remote sensing record colours, measure the reflectance of objects at different wavelenghts (nanometers).
+Every number represents a colour (legend), amount of reflectance in each unit (pixel = smallest unit of an image).
+
+Colours are actially waves (light).
+Newton born in 1642, same year Galileo died.
+Newton described light as different wavelenghts. The visible light is just a small part.
+Remote sensing can detect other wavelenghts as well.
+Gamma ray - xray - ultraviolet (insect see the world through this) - VISIBLE - infrared - microwave - radio
+[Blue smaller wavelenght, red bigger wavelenghts]
+
+We can take a sensor put it on a drone/satelite and make it fly through a landscape, 
+obtaining an image of different bands (many layers of reflectance of different wavelenghts).
+
+
+
