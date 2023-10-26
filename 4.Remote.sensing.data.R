@@ -15,6 +15,8 @@ From ellipsoid to planar system
 Universal Transverse Mercator (UTM) = Gauss projection, frangmentation of the planet system, divide the surface in the meridians (12).
 Every zone is 6 degrees, 60 zones. We start counting zones from the antimeridian of Greenwhich (Hawaii).
 Italy is in 32 and 33 zone.
+Knowing the starting reference system, you can pass to another (6 parameters transformation).
+
 
 
 
