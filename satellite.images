@@ -4,3 +4,6 @@ If the reflected energy is zero, there is an 100% absorption of the incident ene
 In the green there is a high reflectance and low absorption.
 Range between 0 and 2035.
 
+# RGB function
+red b4, green b3, blue b2 (+b8) -> need all to make a visible image, to recreate the image in the exact same colors of "reality"
+im.plotRGB
