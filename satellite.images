@@ -1,0 +1,6 @@
+# How do satellite images work?
+The reflectance is a ratio between incident light (flow of energy) and the radiant flux (reflected energy). 
+If the reflected energy is zero, there is an 100% absorption of the incident energy.
+In the green there is a high reflectance and low absorption.
+Range between 0 and 2035.
+
