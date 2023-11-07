@@ -1,0 +1,6 @@
+ INDICES
+# Mounting bands together you obtain indices
+# Difference between NIR and RED
+# an healthy plant has an high reflectance in the NIR and a low reflectance in the red
+# NIR - RED is high
+# when the index is low (NIR reflectance is a bit lower while red is higher) the leaf is not healthy 
