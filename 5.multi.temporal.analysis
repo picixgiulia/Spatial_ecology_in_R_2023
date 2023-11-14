@@ -1,0 +1,64 @@
+# 14/11/23
+# Covid-19 lockdown effect on GHGs emissions (multi-temporal analisys)
+library(imageRy)
+library(terra)
+im.list()
+# level of NO2
+EN01 <- im.import("EN_01.png") # january
+EN13 <- im.import("EN_13.png") # march
+
+par(mfrow = c(2,1))
+im.plotRGB.auto(EN01) # automatically shows in 3 bands of RGB
+im.plotRGB.auto(EN13)
+
+# plot different between the 2 maps
+dif = EN01[[1]] - EN13[[1]] # difference between the first bands of the 2 images
+plot(dif) # (8 bit image)
+# chnage color palette
+
+cldif <- colorRampPalette(c("blue", "white", "red")) (100)
+plot(dif, col=cldif) # blue is higher in march, red is higher in january
+
+
+# Greenland data
+# website of the data = Copernicus Global Land Service
+# example: temperature in Greenland
+im.list()
+g2000 <- im.import("greenland.2000.tif") # image of 16 bits
+# temperature of the surface (not air)
+clg <- colorRampPalette(c("black","blue", "white", "red")) (100)
+plot(g2000, col=clg) # blue is cold, black is the coldest
+
+g2005 <- im.import("greenland.2005.tif")                                
+g2010 <- im.import("greenland.2010.tif")
+g2015 <- im.import("greenland.2015.tif") 
+
+plot(g2005, col=clg)
+plot(g2010, col=clg)
+plot(g2015, col=clg)
+
+# compare change in temperature from 2000 to 2015
+par(mfrow = c(2, 1)) 
+plot(g2000, col=clg)
+plot(g2015, col=clg)
+
+# visualize all images together
+stackg <- c(g2000, g2005, g2010, g2015) # great difference between 2000 and 2005
+plot(stackg, col=clg)
+
+# Exercise: find difference between first and final elements of the stack
+diftemp <- g2000 - g2015
+plot(diftemp, col=clg)
+# an other way is using the stack created prior
+difg <- stackg[[1]] - stackg[[4]]
+plot(difg, col=cldif)
+
+# we can use 3 of the 4 images to build an RGB
+# g2000 = R, high values are red, 2005 = G, high values are green, 2010 = B, high values are blue
+
+# Exercise: create an RGB plot using different years
+im.plotRGB(stackg, r=1, g=2, b=3) # black central part (blue/black-ish) means in the final year the temp is higher
+
+# take on message: we have the possibilities of seeing changes in landscapes, going in the field is complicated, satellite images makes it easier.
+# most simple site to get data is the Earth observatory
+# for next class download data from the earth observatory (put data in computer from a network)
