@@ -1,0 +1,77 @@
+Pass from original image to classes
+
+We take a picture with vegetation, agriculture and water. 
+We build a graph with the red band on the x axis and the nir band in the y axis. 
+We consider a pixel of the image where is present vegetation, 
+the coordinates of the point in the graph depend on the amount of reflectance of each band.
+The pixels with vegetation will form a cluster of points in a certain region,
+and the onew of agriculture and water will form other clusters in other regions of the graph.
+How do we classify a pixel that is not in any cluster?
+Based on the distance from each class/cluster, we'll choose the one closest to it.
+In this way we can classify any single pixel in the picture.
+
+On R
+# Classify satellite images and estimate the amount of change
+
+library(terra)
+library(imageRy)
+
+im.list()
+sun <- im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+# we can see 3 level of energy: yellow is the higher, balck is the lowest
+sunc <- im.classify(sun, num_clusters = 3)
+plot(sunc)
+# need to download current imageRy package (new version)
+
+# how can i state which class is the one with the higherst energy?
+# comparing with the original image 
+# class number 1 is the highest in this case
+# classify satellite data
+im.list()
+m2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")                    
+m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+
+plotRGB(m1992)
+# difficult to distinguish soil and water, water shoud be black on NIR but since is full of soil in appears the same
+m1992c <- im.classify(m1992, num_clusters=2)
+plot(m1992c)
+# classes: forest = 2, human = 1
+m2006c <- im.classify(m2006, num_clusters=2)
+plot(m2006c)
+
+par(mfrow=c(1,2))
+plot(m1992c)
+plot(m2006c)
+
+f1992 <- freq(m1992c)
+f1992
+tot1992 <- ncell(m1992c)
+# percentage
+p1992 <- f1992*100 / tot1992
+p1992
+# forest: ; human: 
+
+f2006 <- freq(m2006c)
+f2006
+tot2006 <- ncell(m2006c)
+# percentage
+p2006 <- f2006*100 / tot2006
+p2006
+
+# install new version of RStudio
+# install new version of package imageRy
+
+# built dataframe
+class <- c("forest", "human")
+y1992 <- (result percentages before)
+
+
+
+
+
+
+
+
+
+
+
