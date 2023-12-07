@@ -64,9 +64,12 @@ p2006
 # built dataframe
 class <- c("forest", "human")
 y1992 <- (result percentages before)
+same for 2006
+tabout <- data.frame(calss, y1992, y2006)
+tabout
 
-
-
+#final output
+p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class) + geom_bar(stat="identity", fill="white"))
 
 
 
