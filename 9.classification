@@ -49,27 +49,40 @@ tot1992 <- ncell(m1992c)
 # percentage
 p1992 <- f1992*100 / tot1992
 p1992
-# forest: ; human: 
+# forest: 83.1%; human: 16.9%
 
+# percentage of 2006
 f2006 <- freq(m2006c)
 f2006
 tot2006 <- ncell(m2006c)
 # percentage
-p2006 <- f2006*100 / tot2006
+p2006 <- f2006 * 100 / tot2006 
 p2006
+# forest: 45.3%%; human: 54.7%
 
-# install new version of RStudio
-# install new version of package imageRy
-
-# built dataframe
+# building the final table
 class <- c("forest", "human")
-y1992 <- (result percentages before)
-same for 2006
-tabout <- data.frame(calss, y1992, y2006)
+y1992 <- c(83, 17)
+y2006 <- c(45, 55) 
+
+tabout <- data.frame(class, y1992, y2006)
 tabout
 
-#final output
-p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class) + geom_bar(stat="identity", fill="white"))
+# 12/12/23
+library(ggplot2)
+# final output
+p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white")
+p1
+p2 <- ggplot(tabout, aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white")
+p2
+p1 + p2 #(don't work?)
+
+# final output, rescaled
+p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p1
+p2 <- ggplot(tabout, aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2
+p1 + p2
 
 
 
