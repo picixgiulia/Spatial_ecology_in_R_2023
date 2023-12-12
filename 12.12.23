@@ -1,1 +1,45 @@
-bla
+Why LaTeX is better (powerful language)
+Problems using Word:
+- formulas
+- Layout
+- Figures
+- Bibliography
+- ...
+
+Put in CV use of LaTex as well
+
+arguments are in {alt gr + shift + è}
+\usepackage instead of library
+
+to change structure you use []
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref} (when you click to the reference it brings you to that info)
+\title{My first document in LaTeX}
+\author{Giulia Pici }
+% \date{12 December 2023} % use this function or Overleaf will automatically put it alone
+\date{ } % to remove date
+\tableofcontents (create index)
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\section{Introduction}
+\section{Methods}
+For this thesis, I made use of the following formula:
+\begin{equation}
+    F = G \times \frac{m_1 \times m_2}{d^2}
+to add a square root or any other type, example \sqrt[3]{}
+\end{equation}
+We can label the eqaution insteqad of referring to it an 1, so if you add something before you have no problem
+\label{eqNewton}
+\end{equation}
+As we have seen in Equation \ref{eqNewton}, bla bla bla ... It will appear equation 1 on the paper
+\section{Results}
+
+\section{Discussion}
+
+\end{document}
