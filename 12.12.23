@@ -41,5 +41,64 @@ As we have seen in Equation \ref{eqNewton}, bla bla bla ... It will appear equat
 \section{Results}
 
 \section{Discussion}
+The results found in this thesis are in line with the previous experiment of 
+\cite{Anderson2013}
+the main achievements can be summarized as follows:
+\begin{itemize}
+    \item Graphical representation of species distributions
+    \item statistical analysis of uncertainty
+    \item literary review on the theme
+\end{itemize}
+
+\begin{thebibliography}{999}
+\bibitem[Anderson \& Gaston,2013]{Anderson2013}
+Anderson, K., \& Gaston, K. J. (2013). Lightweight unmanned aerial vehicles will revolutionize spatial ecology. Frontiers in Ecology and the Environment, 11(3), 138-146.
+
+\end{thebibliography}
 
 \end{document}
+
+
+adding this simbol \ to something that could be a function it protects it from being considered (is now just a text)
+
+How to create a presentation on LaTeX
+\documentclass{beamer}
+\usepackage{graphicx} % Required for inserting images
+\usetheme{Frankfurt}
+\usecolortheme{dove}
+\title{My first persentation in LaTeX}
+\author{Giulia Pici }
+\date{14 December 2023}
+
+\begin{document}
+
+\maketitle
+
+%\section{Introduction}
+\begin{frame}{My first slide in LaTeX}
+    This is my first text in LaTeX presentations!
+\end{frame}
+\begin{frame}{Items in LaTeX beamer}
+    The main components of the spatial ecology course were:
+    \begin{itemize}
+        \item population ecology
+        \item \pause community ecology
+        \item \pause ecosystems
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Putting a figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg}
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg}
+\end{frame}
+\begin{frame}{Putting a figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg}
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg} \\
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg}
+    \includegraphics[width=0.4\textwidth]{Andromeda.jpeg} \\
+\end{frame}
+
+\end{document}
+
