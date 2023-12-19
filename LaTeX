@@ -102,3 +102,45 @@ How to create a presentation on LaTeX
 
 \end{document}
 
+19/12/23
+after \maketitle
+\AtBeginSection[] 
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection]
+\end{frame}
+}
+# to add index of sections
+
+\section{Approach used}
+\begin{frame}{Adding a formula}
+    The formula used on this study was based on:\\
+    \begin{equation}
+        H = - \sum_{i=1}^N p_i \times \log(p_i)
+    \end{equation}
+    where:\\
+$i$ = singles class;\\
+$p_i$ = proportion of the $i_{th}$ class.
+\end{frame}
+
+\begin{frame}{Adding code}
+The functions used in this study were based on the \texttt{imageRy} package and look like:\\
+\lstinputlisting[language = R]{code.R}
+\end{frame}
+\begin{frame}{Adding code as figure}
+\includegraphics[width =\textwidth]{code.jpg}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
