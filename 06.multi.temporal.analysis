@@ -1,16 +1,17 @@
-# 14/11/23
+# Time series analysis
 # Covid-19 lockdown effect on GHGs emissions (multi-temporal analisys)
 library(imageRy)
 library(terra)
 im.list()
 # level of NO2
-EN01 <- im.import("EN_01.png") # january
-EN13 <- im.import("EN_13.png") # march
+EN01 <- im.import("EN_01.png") # January
+EN13 <- im.import("EN_13.png") # March
 
 par(mfrow = c(2,1))
 im.plotRGB.auto(EN01) # automatically shows in 3 bands of RGB
 im.plotRGB.auto(EN13)
 
+dev.off()
 # plot different between the 2 maps
 dif = EN01[[1]] - EN13[[1]] # difference between the first bands of the 2 images
 plot(dif) # (8 bit image)
@@ -46,7 +47,7 @@ plot(g2015, col=clg)
 stackg <- c(g2000, g2005, g2010, g2015) # great difference between 2000 and 2005
 plot(stackg, col=clg)
 
-# Exercise: find difference between first and final elements of the stack
+# find difference between first and final elements of the stack
 diftemp <- g2000 - g2015
 plot(diftemp, col=clg)
 # an other way is using the stack created prior
@@ -56,9 +57,8 @@ plot(difg, col=cldif)
 # we can use 3 of the 4 images to build an RGB
 # g2000 = R, high values are red, 2005 = G, high values are green, 2010 = B, high values are blue
 
-# Exercise: create an RGB plot using different years
+# create an RGB plot using different years
 im.plotRGB(stackg, r=1, g=2, b=3) # black central part (blue/black-ish) means in the final year the temp is higher
 
 # take on message: we have the possibilities of seeing changes in landscapes, going in the field is complicated, satellite images makes it easier.
 # most simple site to get data is the Earth observatory
-# for next class download data from the earth observatory (put data in computer from a network)
