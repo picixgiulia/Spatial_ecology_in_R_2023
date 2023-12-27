@@ -1,4 +1,4 @@
-# Communities: multivariate
+# Communities: Multivariate analysis
 # (numerical ecology https://shop.elsevier.com/books/numerical-ecology/legendre/978-0-444-53868-0)
 library(vegan)
 
