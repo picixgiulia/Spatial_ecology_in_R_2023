@@ -2,14 +2,22 @@
 library(vegan)
 
 data(dune)
+dune
+# head () is a function that shows you only the first few rows of a dataset
+head(dune)
+# tail () is a function that shows you only the last few rows of a dataset
+tail(dune)
+
+# principal components analysis (PCA)
+# detrended correspondence analysis (DCA) -> decorana
 ord <- decorana(dune)
 ord
-
-# Call:
-# decorana(veg = dune) 
-
+summary(ord)
 # Detrended correspondence analysis with 26 segments.
 # Rescaling of axes with 4 iterations.
+# what we need to know is the length of the new axis, how log is the range inside each axies,
+# we can use this data to scale the analysis
+# To obtain the range and percentage of data in each axis (graph on note)
 
 #                   DCA1   DCA2
 # Eigenvalues     0.5117 0.3036
@@ -20,7 +28,27 @@ ord
 # Decorana values 0.08136 0.04814
 # Axis lengths    1.30055 1.47888
 
+Idc1 = 3.7004
+Idc2 = 3.1166
+Idc3 = 1.30055
+Idc4 = 1.47888
+
+total = Idc1 + Idc2 + Idc3 + Idc4
+
+pIdc1 = Idc1*100/total
+pIdc2 = Idc2*100/total
+pIdc3 = Idc3*100/total
+pIdc4 = Idc4*100/total
+
+pIdc1
+pIdc2
+pIdc3
+pIdc4
+
+pIdc1 + pIdc2
+
 plot(ord)
+# plot with axis of multivariate analysis (since we cannot visualize multiple dimensions)
 
 #communities.overlap
 install.packages("overlap")
