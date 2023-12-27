@@ -32,13 +32,10 @@ people <- paula
 microplastics <- sophi
 
 plot(people, microplastics)
-plot(people, microplastics, pch=19)
 # https://www.google.com/search?client=ubuntu-sn&hs=yV6&sca_esv=570352775&channel=fs&sxsrf=AM9HkKknoSOcu32qjoErsqX4O1ILBOJX4w:1696347741672&q=point+symbols+in+R&tbm=isch&source=lnms&sa=X&ved=2ahUKEwia9brkm9qBAxVrQvEDHbEYDuMQ0pQJegQIChAB&biw=1760&bih=887&dpr=1.09#imgrc=lUw3nrgRKV8ynM
-
-# I can change the size of the characters
-plot(people, microplastics, pch=19, cex=2)
-# and the colours used
-plot(people, microplastics, pch=19, cex=2, col="blue")
+plot(poeple, microplastics, psh=19) #to change the type of points, look up number on internet
+plot(poeple, microplastics, psh=19, cex=2) #to change the dimensions of the points
+plot(poeple, microplastics, psh=19, cex=2, col="blue") #to change the colour of the points
 
 # With the function 
 inctall.package("")
