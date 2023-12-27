@@ -39,3 +39,7 @@ plot(people, microplastics, pch=19)
 plot(people, microplastics, pch=19, cex=2)
 # and the colours used
 plot(people, microplastics, pch=19, cex=2, col="blue")
+
+# With the function 
+inctall.package("")
+# we can install new packages
