@@ -1,5 +1,6 @@
+# Code related to population ecology
+# How to create a plot
 # A package is needed for point pattern analysis
-
 install.packages("spatstat")
 library(spatstat)
 
@@ -47,7 +48,7 @@ plot(elev)
 bei.extra
 bei.extra$elev
 
-# multiframe: create plot with multiple variables, big frame with plots inside
+# multiframe: create plot with multiple variables, big frame with more than one plot inside
 par(mfrow = c (1,2)) # 1 row and 2 columns
 plot(densitymap)
 plot(elev)
@@ -61,4 +62,4 @@ plot(bei, cex = .2)
 plot(densitymap, col = cl2)
 plot(elev)
 
-# usefule to compare data and find out why
+# usefule to compare data and find relations
