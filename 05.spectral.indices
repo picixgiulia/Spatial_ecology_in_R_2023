@@ -1,11 +1,11 @@
- INDICES
+INDICES
 Mounting bands together you obtain indices
 Difference between NIR and RED
 an healthy plant has an high reflectance in the NIR and a low reflectance in the red
 NIR - RED is high
 when the index is low (NIR reflectance is a bit lower while red is higher) the leaf is not healthy 
 
-9/11/23 THEORY
+THEORY
 Bits -> 0 or 1, on or off: binary code
 if you have 2 lights we can have 0 0 or 0 1 or 1 0 or 1 1. This are 2bits that represent 4 info. 
 With 3 bits we have 8 info.
@@ -21,7 +21,7 @@ NDVI values range between -1 to +1
 Whereas the DVI range depends on the amount of bits
 
 
- 9/11/23 R
+R script
 # build a multiframe with m1992 and m2006 
 par(mfrow=c(1,2))
 plot(m1992)
