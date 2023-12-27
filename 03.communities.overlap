@@ -6,17 +6,17 @@ install.packages("overlap")
 library(overlap)
 # https://cran.r-project.org/web/packages/overlap/vignettes/overlap.pdf
 
-# data
+# Data from Kerinci-Seblat national park (Indonesia)
 data(kerinci)
 head(kerinci)
 # The unit of time is the day, so values range from 0 to 1.
 summary(kerinci) # abstract of the dataset
 
 # tiger
-timeRad <- kerinci$Time * 2 * pi # to change time into timerad
+timeRad <- kerinci$Time * 2 * pi # pass from linear to circular time, multiply orginal time to 2*pi
 timeRad
 # select lines of the data only about tigers
-tig <- timeRad[kerinci$Sps == 'tiger'] # time sightings of tigers
+tig <- timeRad[kerinci$Sps == 'tiger'] # the column Sps has to contain only tigers, time sightings of tigers
 densityPlot(tig, rug=TRUE)
 
 # overlap
@@ -36,17 +36,7 @@ legend('topright', c("Macaques", "Tapirs"), lty=c(1,2), col=c("black","blue"), b
 
 
 
-# Communities overlap
-# relation among species in time
-
-install.packages("overlap")
-library(overlap)
-# data from Kerinci-Seblat national park (Indonesia)
-data(kerinci)
-head(kerinci)
-# The unit of time is the day, so values range from 0 to 1.
-summary(kerinci) # abstract of the dataset
-
+# Another way of doing the same thing
 # select lines of the dataset only about tigers
 tiger <- kerinci[kerinci$Sps=="tiger",] # the column Sps has to contain only tigers
 tiger
@@ -66,8 +56,7 @@ plot(tiger$Ttimerad)
 timetiger <- tiger$Ttimerad
 densityPlot(timetiger, rug = TRUE) # shows amount of times you have seen a specie in time
 
-
-# Excercise: select only data on macaque individuals
+# select only data on macaque individuals
 macaque <- kerinci[kerinci$Sps=="macaque",]
 macaque
 head(macaque)
