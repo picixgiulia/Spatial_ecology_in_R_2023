@@ -1,6 +1,6 @@
 # What is R? 
 # R is a programming language and free software environment for statistical computing and graphics.
-# Here I can write anything I want!
+# Here I can write anything I want! In this way R cannot run this line, it is just a comment to explain what is happening.
 
 # R as a calculator
 2 + 3
