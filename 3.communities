@@ -1,4 +1,5 @@
-# communities.multivariate
+# Communities: multivariate
+# (numerical ecology https://shop.elsevier.com/books/numerical-ecology/legendre/978-0-444-53868-0)
 library(vegan)
 
 data(dune)
@@ -50,7 +51,7 @@ pIdc1 + pIdc2
 plot(ord)
 # plot with axis of multivariate analysis (since we cannot visualize multiple dimensions)
 
-#communities.overlap
+#Communities: overlap
 install.packages("overlap")
 library(overlap)
 # https://cran.r-project.org/web/packages/overlap/vignettes/overlap.pdf
