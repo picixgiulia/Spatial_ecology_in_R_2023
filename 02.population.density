@@ -16,9 +16,10 @@ plot(bei, cex=.2)
 
 # density map, passing from points to continuous surface
 densitymap <- density(bei)
-real-valued pixel image
-128 x 128 pixel array (ny, nx)
-enclosing rectangle: [0, 1000] x [0, 500] metres
+# The following info will appear:
+# real-valued pixel image
+# 128 x 128 pixel array (ny, nx)
+# enclosing rectangle: [0, 1000] x [0, 500] metres
 plot(densitymap) # image representing the density of the trees in your area
 
 # we want to add the points of bei on top of the density map
