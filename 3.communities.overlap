@@ -1,4 +1,7 @@
-#Communities: overlap
+# 12.10.23
+# Communities overlap
+# relation among species in time
+
 install.packages("overlap")
 library(overlap)
 # https://cran.r-project.org/web/packages/overlap/vignettes/overlap.pdf
@@ -6,16 +9,20 @@ library(overlap)
 # data
 data(kerinci)
 head(kerinci)
+# The unit of time is the day, so values range from 0 to 1.
+summary(kerinci) # abstract of the dataset
 
 # tiger
-timeRad <- kerinci$Time * 2 * pi
+timeRad <- kerinci$Time * 2 * pi # to change time into timerad
 timeRad
-tig <- timeRad[kerinci$Sps == 'tiger']
+# select lines of the data only about tigers
+tig <- timeRad[kerinci$Sps == 'tiger'] # time sightings of tigers
 densityPlot(tig, rug=TRUE)
 
 # overlap
-mac <- timeRad[kerinci$Sps == 'macaque']
-overlapPlot(tig, mac)
+mac <- timeRad[kerinci$Sps == 'macaque'] # time sightings of macaque
+overlapPlot(tig, mac) # overlap represents when both species present 
+# the grey part is when there is the highest probability to see tiger and macaque together
 legend('topright', c("Tigers", "Macaques"), lty=c(1,2), col=c("black","blue"), bty='n')       
 
 # species
@@ -23,9 +30,9 @@ kerinci$Sps
 summary(kerinci$Sps)
 
 # tapir
-tap <- timeRad[kerinci$Sps == 'tapir']
+tap <- timeRad[kerinci$Sps == 'tapir'] # time sightings of tapir
 overlapPlot(mac, tap)
-legend('topright', c("Macaques", "Tapirs"), lty=c(1,2), col=c("black","blue"), bty='n')  
+legend('topright', c("Macaques", "Tapirs"), lty=c(1,2), col=c("black","blue"), bty='n')    
 
 
 
