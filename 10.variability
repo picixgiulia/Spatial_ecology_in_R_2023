@@ -22,7 +22,7 @@ plot(nir) # the green is vegetation, orange is bare soil (8bit, 256 values)
 # focal
 sd3 <- focal(nir, matrix(1/9, 3, 3), fun=sd) # how many pixels and in which dimensions
 plot(sd3)
-# chnage legend
+# change legend
 viridisc <- colorRampPalette(viridis(7))(255) # use 7 colors of viridis
 plot(sd3, col=viridisc) # represent variability of NIR in the image
 # NW area has an abrupt change in elevation that causes change in amount of vegetation
