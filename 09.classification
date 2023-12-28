@@ -75,14 +75,16 @@ y2006 <- c(45, 55)
 tabout <- data.frame(class, y1992, y2006)
 tabout
 
-# 12/12/23
+
+# We can create a graph representing the data we analyzed
 library(ggplot2)
+library(patchwork)
 # final output
 p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white")
 p1
 p2 <- ggplot(tabout, aes(x=class, y=y2006, color=class)) + geom_bar(stat="identity", fill="white")
 p2
-p1 + p2 #(don't work?)
+p1 + p2 
 
 # final output, rescaled
 p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
