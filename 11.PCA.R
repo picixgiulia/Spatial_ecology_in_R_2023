@@ -1,3 +1,4 @@
+# PCA (Principal Component Analysis): to extract data with many variables and create visualizations to display that data
 library(imageRy)
 library(terra)
 library(viridis)
