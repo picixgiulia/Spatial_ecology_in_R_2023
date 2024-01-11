@@ -12,9 +12,8 @@ head(iris)
 fig <- ggplot(iris, aes(Sepal.Length, fill = Species)) + geom_density(alpha=0.7)
 fig
 # ColorRampPalette used is not colorblind-friendly
-# use function to resolve this problem (cvd = color vision deficiency)
+# use function to visualize the plot like people with different vision deficiencies (cvd = color vision deficiency)
 cvd_grid(fig)
-# shows use how people with different vision deficiency see the plot 
 
 # new plot with sepal width
 fig2 <- ggplot(iris, aes(Sepal.Width, fill = Species)) + geom_density(alpha=0.7)
