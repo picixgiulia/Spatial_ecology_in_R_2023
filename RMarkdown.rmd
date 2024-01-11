@@ -1,0 +1,84 @@
+# How to create a RMarkdown
+# on Rstudio we click on the + in the top left corner and scroll down to R Markdown to create a new file
+
+---
+title: "test"
+author: "Giulia Pici"
+output: html_document
+date: "2024-01-11"
+---
+
+# My first markdown document!
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Using proper packages 
+```{r, eval=T}
+library(imageRy)
+```
+
+# Let's import some data, starting with a list of data
+```{r, eval=T} 
+im.list()
+```
+we put T instead of F to obtain the list of files
+
+```{r, eval=T}
+mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+```
+# info of the image
+just type the name of the object
+```{r, eval=T}
+mato1992
+```
+
+# How to plot the image putting the NIR on top of the green component in the RGB space
+```{r, eval=T}
+im.plotRGB(mato1992, r=2, g=1, b=3)
+```
+how to remove the warning about the unknown extent 
+we can use function -> echo
+if we type s it will copy paste something else we want
+we state to the program to not use echo to write the warning 
+
+# importing the image without the warning
+```{r, eval=T, warining=F}
+mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+```
+
+# plotting several images all together
+```{r, eval=T}
+par(mfrow=c(2,2))
+im.plotRGB(mato1992, r=1, g=2, b=3)
+im.plotRGB(mato1992, r=2, g=1, b=3)
+im.plotRGB(mato1992, r=3, g=2, b=1)
+im.plotRGB(mato1992, r=1, g=3, b=1)
+```
+# Calculating spectral indices
+```{r, eval=T}
+library(viridis)
+library(terra)
+dvi <- mato1992[[1]] - mato1992[[2]]
+viridisc <- colorRampPalette(viridis(7))(255)
+plot(dvi, col = viridisc)
+```
+# when done with the code click on knit
+# calculating variability
+```{r, eval=T}
+sd5 <- focal(mato1992[[1]], matrix(1/25, 5,5), fun=sd)
+plot(sd5, col=viridisc)
+```
