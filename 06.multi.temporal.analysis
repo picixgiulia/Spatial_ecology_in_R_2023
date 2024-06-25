@@ -15,7 +15,7 @@ dev.off()
 # plot different between the 2 maps
 dif = EN01[[1]] - EN13[[1]] # difference between the first bands of the 2 images
 plot(dif) # (8 bit image)
-# chnage color palette
+# change color palette
 
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 plot(dif, col=cldif) # blue is higher in march, red is higher in january
