@@ -19,7 +19,7 @@ final^2
 
 # I can create an array with the function c(), c stands for concatenate.
 sophi <- c(10, 20, 30, 50, 70) # microplastics 
-# fcuntions have parentheses and inside them there are arguments
+# funtions have parentheses and inside them there are arguments
 
 paula <- c(100, 500, 600, 1000, 2000) # people
 # I can create a plot
