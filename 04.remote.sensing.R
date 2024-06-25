@@ -97,7 +97,7 @@ plot(b8, col=cl8)
 # b8 nir el4, stacksent[[4]]
 dev.off()
 im.plotRGB(stacksent, r=3, g=2, b=1) # bands in the visible for humans
-# seems black and white, is actually dark green, this is what we see woth our eyes, 
+# seems black and white, is actually dark green, this is what we see with our eyes, 
 # we need other wavelenghts to see it in a meaningful manner (now is very low resolution)
 # the NIR wavelenght
 
