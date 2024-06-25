@@ -5,7 +5,7 @@ We build a graph with the red band on the x axis and the nir band in the y axis.
 We consider a pixel of the image where is present vegetation, 
 the coordinates of the point in the graph depend on the amount of reflectance of each band.
 The pixels with vegetation will form a cluster of points in a certain region,
-and the onew of agriculture and water will form other clusters in other regions of the graph.
+and the ones of agriculture and water will form other clusters in other regions of the graph.
 How do we classify a pixel that is not in any cluster?
 Based on the distance from each class/cluster, we'll choose the one closest to it.
 In this way we can classify any single pixel in the picture.
