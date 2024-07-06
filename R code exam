@@ -1,12 +1,14 @@
 # Exam project
-# Analysis of the vegetation in relation to salinity in the Grosseto coastal area.
+# Giulia Pici
+
+# Analysis of the vegetation and comparison wuth the salinity in the Grosseto coastal area.
 
 # With this work I want to look at the variation of vegetation in the last years.
 
-# The images are from the satellite Sentinel 2 which has data available from 2015 to 2024.
+# The images are from the satellite Sentinel-2 L1C which has data available from 2015 to 2024.
 # The images are taken from june/july (based on which month had clearer images) of 2016, 2020 and 2024.
 
-# First of all I recall all the packages I will need for this work
+# First of all, I recall all the packages we'll need for this work
 
 library(terra)
 library(raster)
@@ -16,44 +18,54 @@ library(ggplot2)
 # Now I set the work directory to import the images
 setwd("C:/Users/PCSUPER/iCloudDrive/UniBo/Spatial ecology in R")
 
-# Import images of area in true colors (with bands: B4, B3, B2)
+# Import images of the area in true colors (with bands: B4 = red , B3 = green, B2 = blue)
 gr2016 <- rast("2016-07-18-00_00_2016-07-18-23_59_Sentinel-2_L1C_True_color.jpg")
 gr2020 <- rast("2020-06-27-00_00_2020-06-27-23_59_Sentinel-2_L1C_True_color.jpg")
 gr2024 <- rast("2024-06-06-00_00_2024-06-06-23_59_Sentinel-2_L1C_True_color.jpg")
 
+# Take a look at the area
 plot(gr2016)
-# I want to work only with data of the coast so I cut the map
-# For doing so I have to change the coordinates of the images.
-ext <- c(230, 1366, 0, 640)
-# I use the function "crop()" and save the new image to work on them
+
+# I want to work only with data of the coast so I cut a part of the map with the sea.
+# To do so I have to change the coordinates of the images.
+# First I choose the new coordinates.
+ext <- c(235, 1366, 0, 640)
+# Then I use the function "crop()" and save the new image to work on them.
 gr2016 <- crop(gr2016, ext)
 gr2020 <- crop(gr2020, ext)
 gr2024 <- crop(gr2024, ext)
 
-# Take a look at the images using plotRGB()
+# Take a look at the images using plotRGB().
 gr2016_subset <- gr2016[[c(1, 2, 3)]]
-plotRGB(gr2016_subset, stretch = "lin", main = "Coastal area of Grosseto in 2016")
+plotRGB(gr2016_subset, stretch = "lin")
 gr2020_subset <- gr2020[[c(1, 2, 3)]]
 plotRGB(gr2020_subset, stretch = "lin")
 gr2024_subset <- gr2024[[c(1, 2, 3)]]
 plotRGB(gr2024_subset, stretch = "lin")
 
-# Let's compare with the salinity of the area
-SI2016 <- (gr2016_subset[[1]]*gr2016_subset[[2]])/gr2016_subset[[3]]
+# Let's calculate the salinity of the area using an index
+# I chose this index: SI = (G x R)/B 
+# first band is B4 (red), 
+# second band is B3 (green) 
+# and third band is B2 (blue)
+SI2016 <- (gr2016_subset[[2]]*gr2016_subset[[1]])/gr2016_subset[[3]]
 par(mfrow = c(1, 2))
 plotRGB(gr2016_subset, stretch = "lin")
 plot(SI2016)
+
 dev.off()
-# The area with the higher values of salinity is the same that lacks vegetation.
-# I calculate the salinity index for the year 2020 and 2024 as well
-SI2020 <- (gr2020_subset[[1]]*gr2020_subset[[2]])/gr2020_subset[[3]]
-SI2024 <- (gr2024_subset[[1]]*gr2024_subset[[2]])/gr2024_subset[[3]]
+
+# The area that lacks vegetation in the one with the higher values of salinity.
+# I calculate the salinity index for the year 2020 and 2024 as well.
+SI2020 <- (gr2020_subset[[2]]*gr2020_subset[[1]])/gr2020_subset[[3]]
+SI2024 <- (gr2024_subset[[2]]*gr2024_subset[[1]])/gr2024_subset[[3]]
 
 # Let's see if there has been change in the level of salinity during the years
 par(mfrow = c(1, 3))
 plot(SI2016)
 plot(SI2020)
 plot(SI2024)
+
 # We can see that salinity increased, only in the areas where there isn't vegetation.
 
 # Saving the images
@@ -69,14 +81,16 @@ jpeg("Salinity2024.jpeg")
 plot(SI2024, main="Salinity - 2024")
 dev.off()
 
+# Now we can quantify the change in vegetation during the years.
+
 # I choose a color palette visible for everyone.
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 
 # We divide the images in classes, to detect change in vegetation.
 gr2016c <- im.classify(gr2016_subset, num_clusters = 3)
 plot(gr2016c, col=cldif)
-# The second class is urban/soil, whereas the first and third are water and vegetation
-# We can use the change in class 2 to quantify the change in vegetation as well
+# The first class is urban/soil, whereas the first and third are vegetation and water.
+# We can use the change in class 2 to quantify the change in vegetation as well.
 # We see the frequence of the classes
 fgr2016c <- freq(gr2016c)
 fgr2016c
@@ -85,7 +99,7 @@ totgr2016c <- ncell(gr2016c)
 # calculate the percentage of each class
 pgr2016c <- fgr2016c*100 / totgr2016c
 pgr2016c
-# urban/soil: 34.3%; vegetation and water: 75.7%
+# urban/soil: 34.5%; vegetation and water: 75.5%
 
 # And we to the same process for the other years
 # year 2020
@@ -112,13 +126,13 @@ totgr2024c <- ncell(gr2024c)
 
 pgr2024c <- fgr2024c * 100 / totgr2024c 
 pgr2024c
-# urban/soil: 23.4%; water and vegetation: 76.8%
+# urban/soil: 23.6%; water and vegetation: 76.4%
 
 # With the results we can build a table
 landcover <- c("soil", "other")
-y2016 <- c(34.3, 75.7)
+y2016 <- c(34.5, 75.5)
 y2020 <- c(31, 69)
-y2024 <- c(23.4, 76.8)
+y2024 <- c(23.6, 76.4)
 
 percentage <- data.frame(landcover, y2016, y2020, y2024)
 percentage
@@ -139,7 +153,7 @@ p2
 p3
 
 # Comparing the amount of soil between the different years,
-# we can see that the vegetation increases.
+# we can see that the vegetation increases only in the areas with lower salinity.
 # It doesn't appear to be a correlation between the increase in vegetation and 
 # this specific salinity index.
 
@@ -157,3 +171,5 @@ par(mfrow = c(1, 3))
 plot(gr2016fc[[1]], col=cldif)
 plot(gr2020fc[[1]], col=cldif)
 plot(gr2024fc[[1]], col=cldif)
+
+dev.off()
