@@ -1,2 +1,0 @@
-# Exam Project
-# Detect salinization
