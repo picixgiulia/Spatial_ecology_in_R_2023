@@ -99,17 +99,23 @@ cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 # We divide the images in classes, to detect change in vegetation.
 gr2016c <- im.classify(gr2016_subset, num_clusters = 3)
 plot(gr2016c, col=cldif)
-# The first class is urban/soil, whereas the first and third are vegetation and water.
+# The second class is soil, whereas the first and third are vegetation and water.
 # We can use the change in class 2 to quantify the change in vegetation as well.
+
 # We see the frequency of the classes
 fgr2016c <- freq(gr2016c)
-fgr2016c
+# The results are as follows:
+# value  count
+#  1    242884
+#  2    249553 (soil)
+#  3    231403
+
 # Obtain the total number of cells in the image
 totgr2016c <- ncell(gr2016c)
 # calculate the percentage of each class
 pgr2016c <- fgr2016c*100 / totgr2016c
 pgr2016c
-# urban/soil: 34.5%; vegetation and water: 75.5%
+# soil: 34.5%; vegetation and water: 75.5%
 
 # And we to the same process for the other years
 # year 2020
@@ -117,7 +123,10 @@ gr2020c <- im.classify(gr2020_subset, num_clusters = 3)
 plot(gr2020c, col=cldif)
 
 fgr2020c <- freq(gr2020c)
-fgr2020c
+# value  count
+#  1    275856
+#  2    223588
+#  3    224396 (soil)
 
 totgr2020c <- ncell(gr2020c)
 
@@ -130,7 +139,10 @@ gr2024c <- im.classify(gr2024_subset, num_clusters = 3)
 plot(gr2024c, col=cldif)
 
 fgr2024c <- freq(gr2024c)
-fgr2024c
+# value  count
+#  1    343832
+#  2    209461
+#  3    170547 (soil)
 
 totgr2024c <- ncell(gr2024c)
 
@@ -145,7 +157,9 @@ y2020 <- c(31, 69)
 y2024 <- c(23.6, 76.4)
 
 percentage <- data.frame(landcover, y2016, y2020, y2024)
-percentage
+#   landcover y2016 y2020 y2024
+# 1      soil  34.5    31  23.6
+# 2     other  75.5    69  76.4
 
 # And I plot our data with histograms
 p1 <- ggplot(percentage, aes(x=landcover, y=y2016, color=landcover)) + 
@@ -175,7 +189,6 @@ jpeg("Percentage of soil - 2024.jpeg")
 p3
 dev.off()
 
-# Comparing the amount of soil between the different years,
-# we can see that the vegetation increases only in the areas with lower salinity.
-# It doesn't appear to be a correlation between the increase in vegetation and 
-# this specific salinity index.
+#  Comparing the amount of soil between the different years,
+# we can see that the vegetation increased in the last 8 years.
+# It doesn't appear to be a negative correlation between the increase in vegetation and this specific salinity index.
