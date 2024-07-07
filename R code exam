@@ -6,7 +6,7 @@
 # With this work I want to look at the variation of vegetation in the last years.
 
 # The images are from the satellite Sentinel-2 L1C which has data available from 2015 to 2024.
-# The images are taken from june/july (based on which month had clearer images) of 2016, 2020 and 2024.
+# The images are taken from june/july (based on which month had clearer images) of the years: 2016, 2020 and 2024.
 
 # First of all, I recall all the packages we'll need for this work
 
