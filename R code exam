@@ -35,13 +35,22 @@ gr2016 <- crop(gr2016, ext)
 gr2020 <- crop(gr2020, ext)
 gr2024 <- crop(gr2024, ext)
 
-# Take a look at the images using plotRGB().
+# Take a look at the images using plotRGB() and save them
 gr2016_subset <- gr2016[[c(1, 2, 3)]]
+jpeg("Grosseto2016.jpeg")
 plotRGB(gr2016_subset, stretch = "lin")
+dev.off()
+
 gr2020_subset <- gr2020[[c(1, 2, 3)]]
+jpeg("Grosseto2020.jpeg")
 plotRGB(gr2020_subset, stretch = "lin")
+dev.off()
+
 gr2024_subset <- gr2024[[c(1, 2, 3)]]
+jpeg("Grosseto2024.jpeg")
 plotRGB(gr2024_subset, stretch = "lin")
+dev.off()
+
 
 # Let's calculate the salinity of the area using an index
 # I chose this index: SI = (G x R)/B 
@@ -167,4 +176,5 @@ dev.off()
 
 # Comparing the amount of soil between the different years,
 # we can see that the vegetation increases only in the areas with lower salinity.
-# It doesn't appear to be a correlation between the increase in vegetation and this specific salinity index.
+# It doesn't appear to be a correlation between the increase in vegetation and 
+# this specific salinity index.
