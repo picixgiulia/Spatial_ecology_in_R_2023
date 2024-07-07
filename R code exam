@@ -76,7 +76,7 @@ plot(SI2016)
 plot(SI2020)
 plot(SI2024)
 
-# We can see that salinity increased, only in the areas where there isn't vegetation.
+# We can see that salinity increased, especially in the areas where there isn't vegetation.
 
 # Saving the images
 jpeg("Salinity2016.jpeg")
