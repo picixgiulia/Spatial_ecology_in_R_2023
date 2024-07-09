@@ -106,16 +106,16 @@ plot(gr2016c, col=cldif)
 fgr2016c <- freq(gr2016c)
 # The results are as follows:
 # value  count
-#  1    242884
-#  2    249553 (soil)
-#  3    231403
+#  1    193102
+#  2    298396
+#  3    232342 (soil)
 
 # Obtain the total number of cells in the image
 totgr2016c <- ncell(gr2016c)
 # calculate the percentage of each class
 pgr2016c <- fgr2016c*100 / totgr2016c
 pgr2016c
-# soil: 34.5%; vegetation and water: 75.5%
+# soil: 32.1%; vegetation and water: 67.9%
 
 # And we do the same process for the other years
 # year 2020
@@ -152,14 +152,14 @@ pgr2024c
 
 # With the results we can build a table
 landcover <- c("soil", "other")
-y2016 <- c(34.5, 75.5)
+y2016 <- c(32.1, 67.9)
 y2020 <- c(31, 69)
 y2024 <- c(23.6, 76.4)
 
 percentage <- data.frame(landcover, y2016, y2020, y2024)
 #   landcover y2016 y2020 y2024
-# 1      soil  34.5    31  23.6
-# 2     other  75.5    69  76.4
+# 1      soil  32.1    31  23.6
+# 2     other  67.1    69  76.4
 
 # And I plot our data with histograms
 p1 <- ggplot(percentage, aes(x=landcover, y=y2016, color=landcover)) + 
