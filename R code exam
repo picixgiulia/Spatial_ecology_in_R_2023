@@ -117,7 +117,7 @@ pgr2016c <- fgr2016c*100 / totgr2016c
 pgr2016c
 # soil: 34.5%; vegetation and water: 75.5%
 
-# And we to the same process for the other years
+# And we do the same process for the other years
 # year 2020
 gr2020c <- im.classify(gr2020_subset, num_clusters = 3)
 plot(gr2020c, col=cldif)
