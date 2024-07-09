@@ -229,7 +229,7 @@ vegemap <- rast(vege) # from terra package
 plot(vegemap)
 points(pres, cex=.5)
 
-# vprecipitation predictor
+# precipitation predictor
 prec <- system.file("external/precipitation.asc", package="sdm") 
 precmap <- rast(prec) # from terra package
 plot(precmap)
