@@ -100,7 +100,7 @@ cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 # We divide the images in classes, to detect change in vegetation.
 gr2016c <- im.classify(gr2016_subset, num_clusters = 3)
 plot(gr2016c, col=cldif)
-# The second class is soil, whereas the first and third are vegetation and water.
+# The third class is soil, whereas the first and third are vegetation and water.
 # We can use the change in class 2 to quantify the change in vegetation as well.
 
 # We see the frequency of the classes
