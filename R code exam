@@ -94,7 +94,7 @@ dev.off()
 
 # Now we can quantify the change in vegetation during the years.
 
-# I choose a color palette visible for everyone.
+# I choose a color palette.
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 
 # We divide the images in classes, to detect change in vegetation.
