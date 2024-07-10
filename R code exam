@@ -100,8 +100,8 @@ cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 # We divide the images in classes, to detect change in vegetation.
 gr2016c <- im.classify(gr2016_subset, num_clusters = 3)
 plot(gr2016c, col=cldif)
-# The third class is soil, whereas the first and third are vegetation and water.
-# We can use the change in class 2 to quantify the change in vegetation as well.
+# The third class is soil, whereas the first and second are vegetation and water.
+# We can use the change in class 3 to quantify the change in vegetation as well.
 
 # We see the frequency of the classes
 fgr2016c <- freq(gr2016c)
@@ -162,7 +162,7 @@ percentage <- data.frame(landcover, y2016, y2020, y2024)
 # 1      soil  32.1    31  23.6
 # 2     other  67.1    69  76.4
 
-# And I plot our data with histograms
+# And I plot our data with histograms.
 p1 <- ggplot(percentage, aes(x=landcover, y=y2016, color=landcover)) + 
   geom_bar(stat="identity") + ggtitle("Percentage of soil and other in 2016")
 
@@ -172,7 +172,7 @@ p2 <- ggplot(percentage, aes(x=landcover, y=y2020, color=landcover)) +
 p3 <- ggplot(percentage, aes(x=landcover, y=y2024, color=landcover)) + 
   geom_bar(stat="identity") + ggtitle("Percentage of soil and other in 2024")
 
-# Let's have a look
+# Let's have a look at the graphs
 p1
 p2
 p3
