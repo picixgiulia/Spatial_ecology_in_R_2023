@@ -36,6 +36,10 @@ gr2020 <- crop(gr2020, ext)
 gr2024 <- crop(gr2024, ext)
 
 # Take a look at the images using plotRGB() and save them
+# first band is B4 (red), 
+# second band is B3 (green) 
+# and third band is B2 (blue)
+
 gr2016_subset <- gr2016[[c(1, 2, 3)]]
 jpeg("Grosseto2016.jpeg")
 plotRGB(gr2016_subset, stretch = "lin")
@@ -54,9 +58,6 @@ dev.off()
 # Let's calculate the salinity of the area using an index
 
 # I chose this index: SI = (G x R)/B 
-# first band is B4 (red), 
-# second band is B3 (green) 
-# and third band is B2 (blue)
 
 SI2016 <- (gr2016_subset[[2]]*gr2016_subset[[1]])/gr2016_subset[[3]]
 par(mfrow = c(1, 2))
